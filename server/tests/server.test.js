@@ -1,19 +1,19 @@
-const expect = require('expect');
-const request = require('supertest');
+const expect = require("expect");
+const request = require("supertest");
 
-const {app} = require('./../server');
-const {Todo} = request('./../models/todo');
+const {app} = require("./../server");
+const {Todo} = request("./../models/todo");
 
 beforeEach((done) => {
   Todo.remove({}).then(() => done());
 });
 
-describe('POST /todos', () => {
+describe("POST /todos", () => {
   it('should create a new todo', (done) => {
     var text = 'Test todo text';
 
     request(app)
-      .post('/todos')
+      .post("/todos")
       .send({text})
       .expect(200)
       .expect((res) => {
